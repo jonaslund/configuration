@@ -31,6 +31,8 @@ source $ZSH/oh-my-zsh.sh
 setopt nohup #don't kill jobs when logout
 setopt nocheckjobs #and do it silently :)
 
+#Home Path Bin // shell scripts and such
+PATH=$PATH:$HOME/bin
 
 # Customize to your needs...
 #
@@ -152,6 +154,8 @@ alias orphand='sudo deborphan | xargs sudo apt-get -y remove --purge'
 alias cleanup='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove && orphand'
 alias search="apt-cache search"
 
+#git
+alias gitconf='git config branch.master.remote origin;git config branch.master.merge refs/heads/master'
 
 ##Info
 alias stamp='date "+%Y-%m-%d %a %H:%M"'
@@ -201,8 +205,7 @@ echo -ne "\t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 # Welcome Info:
 #------------------------------------------////
 clear
-echo -e "${LIGHTGRAY}";figlet " XEROX #!";
+echo -e "${LIGHTGRAY}";toilet --gay " XEROX #!";
+#echo -e "${BLUE}";figlet "HAVE GOOD TIME!";
 echo -ne "${red}Today is:\t\t${cyan}" `date`; echo ""
-#echo -e "${red}Kernel Information: \t${cyan}" `uname -smr`
-
-
+echo -e "${red}Kernel Information: \t${cyan}" `uname -smr`
