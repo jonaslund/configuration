@@ -14,7 +14,7 @@ ZSH_THEME="mgutz"
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
- DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="false"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -33,6 +33,11 @@ setopt nocheckjobs #and do it silently :)
 
 #Home Path Bin // shell scripts and such
 PATH=$PATH:$HOME/bin
+PATH=/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH
+PATH=/opt/local/bin:/opt/local/sbin:$PATH
+PATH=/usr/local/mysql/bin/:$PATH
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
 
 # Customize to your needs...
 #
@@ -46,6 +51,7 @@ PATH=$PATH:$HOME/bin
 
 #enable auto-correct
 #setopt correctall
+unsetopt correct_all
 
 #turn on tab completion and make it fancy
 #autoload -U compinit && compinit
@@ -88,7 +94,6 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
@@ -124,7 +129,7 @@ fi
 # the "fhsm" configuration is loaded from ~/.zsh/functions, which is added to the path above.
 # List options with: prompt -l
 autoload -U promptinit && promptinit 
-prompt fhsm
+#prompt fhsm
 
 
 #------------------------------------------////
@@ -204,8 +209,7 @@ echo -ne "\t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 #------------------------------------------////
 # Welcome Info:
 #------------------------------------------////
-clear
-echo -e "${LIGHTGRAY}";toilet --gay " XEROX #!";
-#echo -e "${BLUE}";figlet "HAVE GOOD TIME!";
 echo -ne "${red}Today is:\t\t${cyan}" `date`; echo ""
 echo -e "${red}Kernel Information: \t${cyan}" `uname -smr`
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
